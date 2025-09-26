@@ -26,10 +26,10 @@ This project implements a video recommendation algorithm that:
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/Tim-Alpha/video-recommendation-assignment.git
+   git clone https://github.com/aagamdesai/video-recommendation-project.git
    ```
    ```bash
-   cd video-recommendation-engine
+   cd video-recommendation-project
    ```
 1. **Set Up Virtual Environment**
 
