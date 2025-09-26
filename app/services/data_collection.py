@@ -11,8 +11,10 @@ HEADERS = {"Flic-Token": settings.flic_token}
 
 
 async def fetch_data(url: str):
-    async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient(follow_redirects=False) as client:
         response = await client.get(url, headers=HEADERS)
+        if response.status_code == 302:
+            raise ValueError("Access forbidden: invalid or missing token")
         response.raise_for_status()
         return response.json()
 
