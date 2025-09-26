@@ -79,7 +79,7 @@ class Post(Base):
     topic = relationship("Topic")
     tags = relationship("Tag", secondary="post_tags")
     interactions = relationship("Interaction", back_populates="post")
-    baseToken = relationship("BaseToken")
+    baseToken = relationship("BaseToken", back_populates="post")
 
 
 class Tag(Base):
@@ -120,4 +120,4 @@ class BaseToken(Base):
     symbol = Column(String, nullable=True)
     image_url = Column(String, nullable=True)
 
-    post = relationship("Post")
+    post = relationship("Post", back_populates="baseToken")
