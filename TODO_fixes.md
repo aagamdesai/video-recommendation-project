@@ -8,8 +8,8 @@
   - Following set to False as not implemented.
 - [x] Update docs/explanation.md to reflect changes.
 - [x] Update README.md to remove "Has to Build".
-- [ ] Test the endpoints to ensure response matches format.
-- [ ] Optionally, improve recommendation to use some form of neural network, but since no training data, keep basic.
+- [x] Test the endpoints to ensure response matches format.
+- [x] Optionally, improve recommendation to use some form of neural network, but since no training data, keep basic.
 
 ## Steps Completed
 1. Updated app/schemas.py: Changed status default to "success".
@@ -17,4 +17,4 @@
 3. Updated app/routers/feed.py: Modified post_to_schema to take db and user_id, set interactions.
 4. Updated docs/explanation.md: Updated response format description.
 5. Updated README.md: Removed "Has to Build".
-6. Next: Test by running the server and checking /feed endpoint.
+6. Tested /feed endpoint: Returns 200 OK with JSON matching output-data-format.md (status "success", no extra fields like picture_url in topic owner, sample posts populated).

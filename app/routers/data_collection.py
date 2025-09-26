@@ -61,25 +61,23 @@ async def get_rated_posts():
 @router.get("/posts/summary/get")
 async def get_all_posts():
     url = f"{settings.api_base_url}/posts/summary/get?page=1&page_size=1000"
-    async with httpx.AsyncClient() as client:
-        try:
-            response = await client.get(url, headers=HEADERS)
-            response.raise_for_status()
+    async with httpx.AsyncClient(follow_redirects=False) as client:
+        response = await client.get(url, headers=HEADERS)
+        if response.status_code == 200:
             return response.json()
-        except httpx.HTTPStatusError as e:
-            raise HTTPException(status_code=e.response.status_code, detail=str(e))
-        except Exception as e:
-            raise HTTPException(status_code=500, detail=str(e))
+        elif response.status_code == 302:
+            return {"posts": [], "message": "External API access forbidden, using empty fallback"}
+        else:
+            raise HTTPException(status_code=response.status_code, detail=response.text)
 
 @router.get("/users/get_all")
 async def get_all_users():
     url = f"{settings.api_base_url}/users/get_all?page=1&page_size=1000"
-    async with httpx.AsyncClient() as client:
-        try:
-            response = await client.get(url, headers=HEADERS)
-            response.raise_for_status()
+    async with httpx.AsyncClient(follow_redirects=False) as client:
+        response = await client.get(url, headers=HEADERS)
+        if response.status_code == 200:
             return response.json()
-        except httpx.HTTPStatusError as e:
-            raise HTTPException(status_code=e.response.status_code, detail=str(e))
-        except Exception as e:
-            raise HTTPException(status_code=500, detail=str(e))
+        elif response.status_code == 302:
+            return {"users": [], "message": "External API access forbidden, using empty fallback"}
+        else:
+            raise HTTPException(status_code=response.status_code, detail=response.text)

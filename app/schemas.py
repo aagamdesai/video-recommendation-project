@@ -21,8 +21,15 @@ class CategoryBase(BaseModel):
     image_url: Optional[str] = None
 
 
-class TopicOwner(UserBase):
+class TopicOwner(BaseModel):
+    first_name: Optional[str] = None
+    last_name: Optional[str] = None
+    name: Optional[str] = None
+    username: str
     profile_url: Optional[str] = None
+    user_type: Optional[str] = None
+    has_evm_wallet: bool = False
+    has_solana_wallet: bool = False
 
 
 class TopicBase(BaseModel):
@@ -79,5 +86,5 @@ class PostBase(BaseModel):
 
 
 class FeedResponse(BaseModel):
-    status: str = "True"
+    status: str = "success"
     post: List[PostBase]

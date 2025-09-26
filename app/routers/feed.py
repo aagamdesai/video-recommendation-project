@@ -1,3 +1,4 @@
+
 from fastapi import APIRouter, HTTPException, Query
 from ..services.recommendation import get_personalized_recommendations, get_category_recommendations
 from ..crud.crud import get_posts_by_ids, get_user_by_username, has_user_interaction
@@ -114,7 +115,7 @@ def get_feed(
 
         posts = get_posts_by_ids(db, post_ids)
         post_schemas = [post_to_schema(db, p, user.id if user else None) for p in posts]
-        return FeedResponse(post=post_schemas, status="True")
+        return FeedResponse(post=post_schemas, status="success")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     finally:
