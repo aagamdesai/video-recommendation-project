@@ -32,5 +32,6 @@ Based on the comprehensive plan, here are the logical steps to complete the proj
 - [x] 15. Test setup: Run migrations, start server, verify endpoints (manual via tools later).
 - [x] 16. Create docs/ folder with explanation.md on how the recommendation system works.
 - [x] 17. Update README.md if needed for any clarifications.
+- [x] 18. Create data collection endpoints for internal use: /posts/view, /posts/like, /posts/inspire, /posts/rating, /posts/summary/get, /users/get_all.
 
 Progress will be updated by checking off completed steps after each major file creation or tool use.
