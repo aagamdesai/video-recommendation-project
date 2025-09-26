@@ -130,7 +130,11 @@ Contains blockchain-related token data (if applicable).
 ## **3. Example JSON Response**
 ```json
 {
-  "status": "success",
+<<<<<<< HEAD
+  "status": "True",
+=======
+  "status": "True",
+>>>>>>> blackboxai/fix-feed-and-302-errors
   "post": [
     {
       "id": 3104,

@@ -63,7 +63,11 @@ This project implements a video recommendation algorithm that:
 
 ## 📊 API Endpoints
 
-### Recommendation Endpoints Has to Build
+<<<<<<< HEAD
+### Recommendation Endpoints
+=======
+### Recommendation Endpoints
+>>>>>>> blackboxai/fix-feed-and-302-errors
 
 1. **Get Personalized Feed**
 
