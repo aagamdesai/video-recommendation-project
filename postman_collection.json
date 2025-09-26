@@ -1,0 +1,56 @@
+{
+  "info": {
+    "name": "Video Recommendation API",
+    "description": "API collection for the Video Recommendation Engine",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get Feed",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/feed?username={{username}}&project_code={{project_code}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "feed"
+          ],
+          "query": [
+            {
+              "key": "username",
+              "value": "{{username}}",
+              "description": "Username for personalized recommendations"
+            },
+            {
+              "key": "project_code",
+              "value": "{{project_code}}",
+              "description": "Project code for category-based recommendations (optional)"
+            }
+          ]
+        },
+        "description": "Returns personalized or category-based video recommendations for a user."
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000",
+      "type": "string"
+    },
+    {
+      "key": "username",
+      "value": "sachin",
+      "type": "string"
+    },
+    {
+      "key": "project_code",
+      "value": "flic",
+      "type": "string"
+    }
+  ]
+}
