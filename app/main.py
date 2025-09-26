@@ -26,10 +26,10 @@ app.add_middleware(
 app.include_router(feed_router)
 app.include_router(data_collection_router)
 
-@app.on_event("startup")
-async def startup_event():
-    # Run data collection in background to not block startup
-    asyncio.create_task(collect_all_data())
+# @app.on_event("startup")
+# async def startup_event():
+#     # Run data collection in background to not block startup
+#     asyncio.create_task(collect_all_data())
 
 @app.get("/")
 def read_root():
