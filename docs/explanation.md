@@ -60,7 +60,7 @@ This Video Recommendation Engine is built using FastAPI and provides personalize
 - **Response Format**: Follows the detailed post object structure with status and post array
 
 ## Response Format
-- **Status**: "success" for successful requests
+- **Status**: `True` for successful requests, `False` for unsuccessful requests
 - **Post Array**: List of post objects with full metadata including owner, category, topic, tags, etc.
 - **User Interactions**: upvoted, bookmarked, following fields are set based on user's past interactions with the posts.
 - **Timestamps**: In milliseconds (Unix timestamp format)

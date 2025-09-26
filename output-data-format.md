@@ -130,7 +130,7 @@ Contains blockchain-related token data (if applicable).
 ## **3. Example JSON Response**
 ```json
 {
-  "status": "success",
+  "status": "True",
   "post": [
     {
       "id": 3104,

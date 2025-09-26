@@ -79,6 +79,7 @@ class Post(Base):
     topic = relationship("Topic")
     tags = relationship("Tag", secondary="post_tags")
     interactions = relationship("Interaction", back_populates="post")
+    baseToken = relationship("BaseToken")
 
 
 class Tag(Base):

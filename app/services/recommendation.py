@@ -34,7 +34,7 @@ def get_personalized_recommendations(username: str, limit: int = 20) -> List[int
                 category_posts = db.query(Post).filter(Post.category_id == post.category_id, Post.id != post.id).all()
                 similar_posts.extend([p.id for p in category_posts])
                 # Posts with same tags
-                post_tags = [pt.tag.name for pt in post.tags]
+                post_tags = [pt.name for pt in post.tags]
                 for tag_name in post_tags:
                     tag_posts = db.query(Post).join(Post.tags).filter(Tag.name == tag_name, Post.id != post.id).all()
                     similar_posts.extend([p.id for p in tag_posts])

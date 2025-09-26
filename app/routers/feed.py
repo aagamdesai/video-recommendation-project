@@ -54,11 +54,11 @@ def post_to_schema(db: Session, db_post, user_id: Optional[int] = None) -> PostB
         "owner": topic_owner,
     }
     base_token = {
-        "address": "",
-        "name": "",
-        "symbol": "",
-        "image_url": "",
-    }  # Assuming empty for now
+        "address": db_post.baseToken.address or "" if db_post.baseToken else "",
+        "name": db_post.baseToken.name or "" if db_post.baseToken else "",
+        "symbol": db_post.baseToken.symbol or "" if db_post.baseToken else "",
+        "image_url": db_post.baseToken.image_url or "" if db_post.baseToken else "",
+    }
     tags = [tag.name for tag in db_post.tags]
 
     upvoted = has_user_interaction(db, user_id, db_post.id, 'like') if user_id else False
@@ -115,8 +115,8 @@ def get_feed(
 
         posts = get_posts_by_ids(db, post_ids)
         post_schemas = [post_to_schema(db, p, user.id if user else None) for p in posts]
-        return FeedResponse(post=post_schemas, status="success")
+        return FeedResponse(post=post_schemas, status="True")
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        return FeedResponse(status="False", post=[])
     finally:
         db.close()
