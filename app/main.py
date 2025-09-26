@@ -6,6 +6,7 @@ from .database import engine
 from .models import Base
 from .services.data_collection import collect_all_data
 import logging
+import asyncio
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -27,12 +28,8 @@ app.include_router(data_collection_router)
 
 @app.on_event("startup")
 async def startup_event():
-    try:
-        logging.info("Starting data collection...")
-        await collect_all_data()
-        logging.info("Data collection completed.")
-    except Exception as e:
-        logging.warning(f"Data collection failed: {e}. Using sample data instead.")
+    # Run data collection in background to not block startup
+    asyncio.create_task(collect_all_data())
 
 @app.get("/")
 def read_root():
