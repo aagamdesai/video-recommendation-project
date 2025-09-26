@@ -115,8 +115,8 @@ def get_feed(
 
         posts = get_posts_by_ids(db, post_ids)
         post_schemas = [post_to_schema(db, p, user.id if user else None) for p in posts]
-        return FeedResponse(post=post_schemas, status="True")
+        return FeedResponse(post=post_schemas, status=True)
     except Exception as e:
-        return FeedResponse(status="False", post=[])
+        return FeedResponse(status=False, post=[])
     finally:
         db.close()

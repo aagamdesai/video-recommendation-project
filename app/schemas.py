@@ -86,5 +86,5 @@ class PostBase(BaseModel):
 
 
 class FeedResponse(BaseModel):
-    status: str = "True"
+    status: bool = True
     post: List[PostBase]
